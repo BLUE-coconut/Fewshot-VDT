@@ -11,7 +11,7 @@ from torchvision.models import vgg
 #from .Trifusemodel import TriFusenet
 from .Trifuse import *
 from .base.feature import extract_feat_vgg, extract_feat_res, extract_feat_res_layer
-from .base.correlation import Correlation,Correlation_V0
+from .base.correlation import Correlation
 
 import numpy as np
 

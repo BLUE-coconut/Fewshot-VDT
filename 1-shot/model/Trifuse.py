@@ -43,7 +43,7 @@ class TriCorr_v2_6(nn.Module):
             self.mid_ch = mid_ch
         
         if (out_ch is None):
-            self.out_ch = mid_ch
+            self.out_ch = self.mid_ch
         else:
             self.out_ch = out_ch
 
@@ -75,8 +75,8 @@ class TriCorr_v2_6(nn.Module):
         REQ = self.Q_sim_conv(sim)*QV
         Q_en_V = self.MHA_V(self.conv_DT(torch.cat([QD,QT],dim=1)),REQ,REQ)
         
-        REV = self.S_sim_conv(sim)*SV
-        S_en_V = self.MHA_V(self.conv_DT(torch.cat([SD,ST],dim=1)),REV,REV)
+        RES = self.S_sim_conv(sim)*SV
+        S_en_V = self.MHA_V(self.conv_DT(torch.cat([SD,ST],dim=1)),RES,RES)
         
         fused_Trimaps.append(self.V_corr(torch.cat([Q_en_V,S_en_V],dim=1)))  
 
